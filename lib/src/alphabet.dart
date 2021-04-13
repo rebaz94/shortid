@@ -4,15 +4,15 @@ import 'package:shortid/src/error.dart';
 const _ORIGINAL =
     '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-';
 
-String _alphabet;
-double _previousSeed;
-String _shuffled;
+String? _alphabet;
+double? _previousSeed;
+String? _shuffled;
 
 String get() {
   if (_alphabet == null) {
     return _ORIGINAL;
   }
-  return _alphabet;
+  return _alphabet!;
 }
 
 String lookup(int index) {
@@ -30,11 +30,11 @@ void setCharacters(String alphabet) {
       _alphabet = _ORIGINAL;
       reset();
     }
-    return null;
+    return;
   }
 
   if (alphabet == _alphabet) {
-    return null;
+    return;
   }
 
   // removed forced limitations 
@@ -64,7 +64,7 @@ void setCharacters(String alphabet) {
 
 String characters(String alphabet) {
   setCharacters(alphabet);
-  return _alphabet;
+  return _alphabet!;
 }
 
 void seed(double seed) {
@@ -76,7 +76,7 @@ void seed(double seed) {
 }
 
 String shuffle() {
-  if (null == _alphabet) {
+  if (_alphabet == null) {
     setCharacters(_ORIGINAL);
   }
 
@@ -95,14 +95,14 @@ String shuffle() {
     }
     return targetArray.join('');
     */
-  final shuffled = _alphabet.split('');
+  final shuffled = _alphabet!.split('');
   shuffled.shuffle();
   return shuffled.join('');
 }
 
 String shuffled() {
-  if (null != _shuffled) {
-    return _shuffled;
+  if (_shuffled != null) {
+    return _shuffled!;
   }
   return _shuffled = shuffle();
 }

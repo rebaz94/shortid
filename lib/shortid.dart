@@ -26,7 +26,7 @@ class _Shortid {
 
   /// sets new characters to use in the alphabet
   /// returns the shuffled alphabet
-  String characters(String newCharacters) {
+  String characters(String? newCharacters) {
     if (newCharacters != null) {
       alphabet.characters(newCharacters);
     }

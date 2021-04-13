@@ -15,7 +15,7 @@ void main() {
     for (var q = 0; q < i; q++) {
       id = shortid.generate();
       expect(id.length, lessThan(17));
-      ids[id] = ids.containsKey(id) ? ids[id]++ : 1;
+      ids[id] = ids.containsKey(id) ? (ids[id]!)+1 : 1;
       expect(ids[id], equals(1));
     }
 
